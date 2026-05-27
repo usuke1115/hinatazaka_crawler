@@ -1,9 +1,11 @@
 import os
+import time
 from concurrent.futures import ThreadPoolExecutor
 from itertools import repeat
 from pathlib import Path
 
 from src.http_client import fetch_binary
+from src.constants import ONE_SECOND
 
 
 def save_images(urls: list[str], save_dir: Path) -> None:
@@ -17,4 +19,5 @@ def save_image(url: str, save_dir: Path) -> None:
     file_name = os.path.basename(url)
     path = save_dir / file_name
     content = fetch_binary(url)
+    time.sleep(ONE_SECOND)
     path.write_bytes(content)
