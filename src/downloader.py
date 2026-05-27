@@ -19,5 +19,6 @@ def save_image(url: str, save_dir: Path) -> None:
     file_name = os.path.basename(url)
     path = save_dir / file_name
     content = fetch_binary(url)
+    print(f"⌛️ Waiting...")
     time.sleep(ONE_SECOND)
     path.write_bytes(content)
