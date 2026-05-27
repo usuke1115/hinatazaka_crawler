@@ -10,7 +10,7 @@ from src.constants import ONE_SECOND
 
 def save_images(urls: list[str], save_dir: Path) -> None:
     save_dir.mkdir(parents=True, exist_ok=True)
-    with ThreadPoolExecutor(max_workers=8) as executor:
+    with ThreadPoolExecutor(max_workers=3) as executor:
         executor.map(save_image, urls, repeat(save_dir))
     print(f"✅ {len(urls)} Images Are Saved!")
 
