@@ -5,18 +5,23 @@ from src.parser import extract_img_urls
 
 
 def set_url_for_crawl():
-    print("Enter the URL to crawl.")
-    blog_url = input()
-    return blog_url
+    print("Enter some URLs to crawl.")
+    blog_urls = []
+    while True:
+        url = input()
+        if url == "":
+            return blog_urls
+        blog_urls.append(url)
 
 
 class HinatazakaBlogCrawler:
-    def __init__(self, url: str):
-        validate_blog_url(url)
-        self.url = url
+    def __init__(self, urls: list[str]):
+        for url in urls:
+            validate_blog_url(url)
+        self.urls = urls
 
-    def crawl_image_urls(self) -> list[str]:
-        print(f"🚀 START to Crawl on {self.url}\n")
-        html = fetch_html(self.url)
+    def crawl_image_urls(self, url) -> list[str]:
+        print(f"🚀 START to Crawl on {url}\n")
+        html = fetch_html(url)
         img_tags = extract_img_tags(html)
         return extract_img_urls(img_tags)
