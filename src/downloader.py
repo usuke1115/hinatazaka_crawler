@@ -4,8 +4,8 @@ from concurrent.futures import ThreadPoolExecutor
 from itertools import repeat
 from pathlib import Path
 
-from src.http_client import fetch_binary
 from src.constants import ONE_SECOND
+from src.http_client import fetch_binary
 
 
 def save_images(urls: list[str], save_dir: Path) -> None:
