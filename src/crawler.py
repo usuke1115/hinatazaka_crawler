@@ -1,7 +1,6 @@
-from src.validator import validate_blog_url
 from src.http_client import fetch_html
-from src.parser import extract_img_tags
-from src.parser import extract_img_urls
+from src.parser import extract_img_tags, extract_img_urls
+from src.validator import validate_blog_url
 
 
 def set_url_for_crawl():
