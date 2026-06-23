@@ -7,7 +7,6 @@ permissions:
 
 jobs:
   formate-python-file:
-    using: 'node24'
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
@@ -23,12 +22,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install black isort
-      - name: black
-        run: |
-          black .
       - name: isort
         run: |
           isort .
+      - name: black
+        run: |
+          black .
       - name: push
         run: |
           git config --global user.name "github-actions[bot]"
@@ -38,5 +37,5 @@ jobs:
 
           git diff --cached --quiet && echo "No Changes to Commit" && exit 0
 
-          git commit-m "style: auto commit"
+          git commit -m "style: auto commit"
           git push
