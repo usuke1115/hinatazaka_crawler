@@ -1,5 +1,5 @@
-from bs4 import BeautifulSoup
-from bs4 import Tag
+from bs4 import BeautifulSoup, Tag
+
 from src.constants import BLOG_BODY_CLASS
 from src.exceptions import BlogContentNotFoundError
 
